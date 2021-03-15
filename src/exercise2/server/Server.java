@@ -115,13 +115,16 @@ public class Server {
                 client.sendMessage("[OK] Friends removed from" + names.get(0) + "'s list");
 
             } else if (message.matches("^-[a-zA-Z]+$")) {
-                for (int i = 0; i < persons.size(); i++) {
-                    if (persons.get(i).getFriends().contains(new Person(names.get(0))))
-                        persons.get(i).removeFriend(persons.get(persons.indexOf(new Person(names.get(0)))));
-                }
-                persons.remove(new Person(names.get(0)));
+                if (persons.contains(new Person(message.substring(1)))) {
+                    for (int i = 0; i < persons.size(); i++) {
+                        if (persons.get(i).getFriends().contains(new Person(names.get(0))))
+                            persons.get(i).removeFriend(persons.get(persons.indexOf(new Person(names.get(0)))));
+                    }
+                    persons.remove(new Person(names.get(0)));
 
-                client.sendMessage("[OK] " + names.get(0) + " Unregistered");
+                    client.sendMessage("[OK] " + names.get(0) + " Unregistered");
+                }
+                else client.sendMessage("[ERR] Specified name is not registered");
 
             } else if (message.matches("^[a-zA-Z]+\\|[a-zA-Z]+$")) {
                 client.sendMessage(persons.get(persons.indexOf(new Person(names.get(0))))
