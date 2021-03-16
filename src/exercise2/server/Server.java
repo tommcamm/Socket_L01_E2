@@ -92,7 +92,7 @@ public class Server {
                         );
 
                 client.sendMessage("[OK] Friend relationship created");
-            } else if (message.matches("^\\+[a-zA-Z]+\\|[a-zA-Z]+(\\;[a-zA-Z]+)*$")) {
+            } else if (message.matches("^\\+[a-zA-Z]+\\|[a-zA-Z]+(;[a-zA-Z]+)*$")) {
                 for (int i = 1; i < names.size(); i++) {
                     persons.get(persons.indexOf(new Person(names.get(0))))
                             .addFriend(persons.get(persons.indexOf(new Person(names.get(i)))));
@@ -106,7 +106,7 @@ public class Server {
 
                 client.sendMessage("[OK] Friend removed from " + names.get(0) + "'s list");
 
-            } else if (message.matches("^-[a-zA-Z]+\\|[a-zA-Z]+(\\;[a-zA-Z]+)*$")) {
+            } else if (message.matches("^-[a-zA-Z]+\\|[a-zA-Z]+(;[a-zA-Z]+)*$")) {
                 for (int i = 1; i < names.size(); i++) {
                     persons.get(persons.indexOf(new Person(names.get(0))))
                             .removeFriend(persons.get(persons.indexOf(new Person(names.get(i)))));

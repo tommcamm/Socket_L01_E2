@@ -5,8 +5,8 @@ import java.net.Socket;
 import java.net.SocketException;
 
 public class ClientThread extends Thread{
-    private Socket socket;
-    private Server server;
+    private final Socket socket;
+    private final Server server;
     private PrintWriter writer;
 
     public ClientThread(Socket socket, Server server) {
